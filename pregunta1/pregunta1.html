@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Usuarios</title>
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Lista de Usuarios</h1>
+    <ul id="lista-usuarios" class="list-group mt-4">
+      
+    </ul>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      
+      $.getJSON('usuarios.json', function(data) {
+        
+        $.each(data, function(index, usuario) {
+          $('#lista-usuarios').append(
+            '<li class="list-group-item">' +
+            '<strong>Nombre:</strong> ' + usuario.nombre + '<br>' +
+            '<strong>Correo Electrónico:</strong> ' + usuario.correo + '<br>' +
+            '<strong>País:</strong> ' + usuario.pais +
+            '</li>'
+          );
+        });
+      });
+    });
+  </script>
+
+ 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

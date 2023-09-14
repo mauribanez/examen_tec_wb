@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro para el Webinar</title>
+  <!-- Incluir Bootstrap (asegúrate de tener acceso a Internet o descargar Bootstrap localmente) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Incluir jQuery (asegúrate de tener acceso a Internet o descargar jQuery localmente) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #f57208;
+      border-radius: 5px;
+      background-color: #e23f0d;
+    }
+
+    .btn-registrar {
+      background-color: #f5aa08;
+      color: rgb(0, 0, 0);
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Registro para el Webinar</h2>
+    <form id="registro-form">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required minlength="3">
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+      </div>
+      <div class="form-group">
+        <label for="pais">País:</label>
+        <select class="form-control" id="pais" name="pais" required>
+          <option value="">Seleccionar País</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Chile">Chile</option>
+          <option value="Colombia">Colombia</option>
+          <option value="España">España</option>
+          <option value="México">México</option>
+          
+        </select>
+      </div>
+      <button type="submit" class="btn btn-registrar">Registrarse</button>
+    </form>
+   
+    <div class="alert alert-success mt-3" id="registro-exito" style="display: none;">¡Registrado exitosamente!</div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      
+      $('#registro-form').submit(function(event) {
+        var nombre = $('#nombre').val();
+        var correo = $('#correo').val();
+        var pais = $('#pais').val();
+        
+        if (nombre.length < 3) {
+          alert('El nombre debe tener al menos 3 caracteres.');
+          event.preventDefault();
+        }
+
+        if (!validateEmail(correo)) {
+          alert('El correo electrónico no es válido.');
+          event.preventDefault();
+        }
+
+        if (pais === "") {
+          alert('Por favor, selecciona un país.');
+          event.preventDefault();
+        }
+      });
+
+      
+      function validateEmail(email) {
+        var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return pattern.test(email);
+      }
+
+      
+      $('#registro-form').submit(function() {
+        $('#registro-exito').show();
+      });
+    });
+  </script>
+
+ 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

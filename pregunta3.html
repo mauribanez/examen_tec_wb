@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla de Datos</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    
+    .container {
+      max-width: 800px; 
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    
+    th {
+      background-color: #ff7b00; 
+      color: rgb(0, 0, 0); 
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Tabla de Datos</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Ciudad</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-datos">
+        
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      
+      var datos = [
+        { nombre: "Juan", edad: 30, ciudad: "Ciudad A" },
+        { nombre: "María", edad: 25, ciudad: "Ciudad B" },
+        { nombre: "Carlos", edad: 35, ciudad: "Ciudad C" },
+        { nombre: "Laura", edad: 28, ciudad: "Ciudad D" },
+        { nombre: "Pedro", edad: 40, ciudad: "Ciudad E" }
+      ];
+
+      $.each(datos, function(index, dato) {
+        var fila = '<tr>' +
+          '<td>' + dato.nombre + '</td>' +
+          '<td>' + dato.edad + '</td>' +
+          '<td>' + dato.ciudad + '</td>' +
+          '</tr>';
+        $('#tabla-datos').append(fila);
+      });
+    });
+  </script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
